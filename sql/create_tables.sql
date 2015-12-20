@@ -20,6 +20,6 @@ CREATE TABLE Message(
 );
 
 CREATE TABLE Replier(
-  authorid INTEGER REFERENCES Loggedin(id)
+  authorid INTEGER REFERENCES Loggedin(id),
   threadid INTEGER REFERENCES Thread(id)
 );
