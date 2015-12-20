@@ -2,7 +2,7 @@
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](http://www.konstaku.users.cs.helsinki.fi/forum/)
+* [Linkki sovellukseeni](http://konstaku.users.cs.helsinki.fi/forum/)
 * [Linkki dokumentaatiooni](https://github.com/Djiffit/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
