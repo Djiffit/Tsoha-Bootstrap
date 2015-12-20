@@ -7,4 +7,14 @@ Yleisiä linkkejä:
 
 ## Työn aihe
 
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html) 
+Verkkosivulla toimiva keskustelupalsta. Keskustelupalstan käyttäjät voivat aloittaa keskusteluita, lisätä poistaa ja muokata viestejään. Kaikki keskustelupalstan käyttäjät, sekä kirjautuneet että muut käyttäjät voivat selata keskusteluita ja käyttää hakua löytääkseen niitä. Kaikista keskusteluista on myös nähtävissä lista niiden osanottajista. Keskusteluja valvoo moderaattorit, jotka voivat poistaa tilejä, viestejä ja keskusteluja.
+
+Toimintoja:
+
+ - Kirjautuminen
+ - Keskustelun aloittaminen
+ - Keskusteluun vastaaminen
+ - Keskustelujen haku
+ - Tietojen muokkaaminen
+ - Viestien muokkaaminen ja poistaminen
+
