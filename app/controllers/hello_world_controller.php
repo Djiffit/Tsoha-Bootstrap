@@ -22,6 +22,9 @@ class HelloWorldController extends BaseController {
     public static function langat() {
         View::make('langat.html');
     }
+     public static function muokkaa() {
+        View::make('muokkaa.html');
+    }
 
     public static function tili() {
         View::make('tili.html');

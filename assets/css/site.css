@@ -5,6 +5,20 @@
 }
 
 .navbar .container-fluid{
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0px auto;
+}
+
+#menu ul{
+    list-style: none;
+}
+
+#menu li{
+    display: inline;
+}
+#ylapalkkilogin ul{
+    list-style: none;
+}
+#ylapalkkilogin li{
+    display: inline;
 }

@@ -19,3 +19,6 @@
     $routes->get('/langat/kokeilu', function() {
     HelloWorldController::kokeilu();
   });
+      $routes->get('/tili/muokkaa', function() {
+    HelloWorldController::muokkaa();
+  });
