@@ -4,8 +4,15 @@ CREATE TABLE Loggedin(
   password varchar(30) NOT NULL
 );
 
+CREATE TABLE Subforum(
+  id SERIAL PRIMARY KEY,
+  name varchar(30) NOT NULL,
+  description varchar(70) NOT NULL
+);
+
 CREATE TABLE Thread(
   id SERIAL PRIMARY KEY,
+  subforum INTEGER REFERENCES Subforum(id),
   time Timestamp,
   topic varchar(70) NOT NULL,
   starter INTEGER REFERENCES Loggedin(id)
