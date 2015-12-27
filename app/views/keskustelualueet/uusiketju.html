@@ -1,0 +1,28 @@
+{%extends "base.html" %}
+{% block content %}
+{%set id = ""%}
+{% for subforum in subforum%}
+{% set id = subforum.id%}
+<h1>Luodaan uusi ketju alueelle {{subforum.name}}</h1>
+
+
+<p>Otsikon oltava vähintään 5 merkkiä ja viestin 10.</p>
+<form method="post" action="{{base_path}}/langat/{{id}}">
+    <div class="form-group">
+        <div class="form-group">
+            <label>Otsikko</label><br>
+            <input type="text" name="otsikko" class="form-control" size="50" /><br>
+        </div>
+        <div class="form-group">
+            <label>Viesti</label>
+            <textarea name="viesti" class="form-control" id="viesti" cols="15" rows="13"></textarea>
+        </div>
+
+        <div class="form-grop">
+            <button class="btn btn-default" type="submit">Luo ketju</button>
+        </div>
+    </div>
+</form>
+
+{%endfor%}
+{% endblock %}

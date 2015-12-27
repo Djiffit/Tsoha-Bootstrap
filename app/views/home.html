@@ -9,38 +9,23 @@
 </h3>
 <p>
 <table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Aihe</th>
+            <th style="text-align: center">Viimeisin vastaaja</th>
+            <th style="text-align: center">Viimeisin viesti</th>
+        </tr>
+    </thead>
+    {% for viesti in viestit %}
     <tbody>
         <tr>
-            <td>Harvinainen Pepe 3£/kg</td>
-            <td>SiirappiHirvi</td>
-            <td>16.3.2016 05:12</td>
-            <td><button type="button"><a href="/forum/langat/kokeilu"</a>Lue nyt</button>
-        </tr>
-        <tr>
-            <td>Harvinainen Pepe 3£/kg</td>
-            <td>SiirappiHirvi</td>
-            <td>16.3.2016 05:12</td>
-            <td><button type="button"><a href="/forum/langat/kokeilu"</a>Lue nyt</button>
-        </tr>
-        <tr>
-            <td>Harvinainen Pepe 3£/kg</td>
-            <td>SiirappiHirvi</td>
-            <td>16.3.2016 05:12</td>
-            <td><button type="button"><a href="/forum/langat/kokeilu"</a>Lue nyt</button>
-        </tr>
-        <tr>
-            <td>Harvinainen Pepe 3£/kg</td>
-            <td>SiirappiHirvi</td>
-            <td>16.3.2016 05:12</td>
-            <td><button type="button"><a href="/forum/langat/id"</a>Lue nyt</button>
-        </tr>
-        <tr>
-            <td>WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</td>
-            <td>SiirappiHirvi</td>
-            <td>16.3.2016 05:12</td>
-            <td><button type="button"><a href="/forum/langat/id"</a>Lue nyt</button>
+            <td>{{viesti.thread}}</td>
+            <td style="text-align: center">{{viesti.author}}</td>
+            <td style="text-align: center">{{viesti.time}}</td>
+            <td style="text-align: center"><a href="/forum/langat/{{viesti.id}}" <button class="btn btn-primary btn-xs">Lue nyt</button></a>
         </tr>
     </tbody>
+    {% endfor %}
 </table>
 </p>
 {% endblock %}

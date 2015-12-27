@@ -1,0 +1,64 @@
+{%extends "base.html" %}
+{% block content %} 
+{% set lanka = ""%}
+{% set otsikko = ""%}
+{% for viesti in viestit %}
+{% set lanka = viesti.thread%}
+{% set otsikko = viesti.id%}
+{% endfor %}
+<a href="{{base_path}}/uusi/viesti/{{otsikko}}"<button class="btn btn-sm pull-right btn-primary">Vastaa ketjuun</button></a>
+<h3>{{lanka}}</h3>
+
+{% set lanka = ""%}
+{% for viesti in viestit %}
+{% set lanka = viesti.id%}
+<div class="container container-padding">
+    <div>
+        <div>
+
+            <div class="unitlist">
+
+                <div class="thumbnail" style="max-width: 100%">
+
+                    <div class ="caption">
+                        <div class="panel panel-info">
+                            <div class="panel-heading"><b>{{viesti.author}}</b>, {{viesti.time}} <div  class="btn-group btn-group-xs pull-right" role="group">
+                                    <button type="button" class="btn btn-default" class="btn-xs">Muokkaa</button>
+                                    <button type="button" class="btn btn-default" class="btn-xs">Poista</button>
+                                </div></div>
+                            <div class="panel-body">
+                                {{viesti.content}} 
+                            </div>
+                        </div>
+                        <!--                        <p><b>{{viesti.author}}</b>, {{viesti.time}}<br></p>
+                                                <div id="paragraafi">
+                                                    <p>{{viesti.content}}</p>
+                                                </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<!--    {%for viesti in viestit %}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">{{viesti.author}}, {{viesti.time}}</h4>
+        </div>
+        <div class="panel-body">
+            {{viesti.content}}
+                                <div id="menu">
+                        <ul>                            
+                            <li><button class="btn btn-primary btn-xs">Muokkaa</button></li>
+                            <li><button class="btn btn-danger btn-xs">Poista</button></li>
+                        </ul>
+
+        </div>
+    </div>
+    {%endfor%}-->
+
+
+<a href="{{base_path}}/uusi/viesti/{{lanka}}"<button class="btn btn-sm btn-primary">Vastaa ketjuun</button></a>
+
+{% endblock %}

@@ -22,3 +22,18 @@
 #ylapalkkilogin li{
     display: inline;
 }
+
+#viestinapit li{
+    display: inline;
+}
+
+#paragraafi {
+   word-wrap: break-word;
+   width: 100%;
+}
+
+#menuforum li{
+    display: inline;
+    list-style: none;
+    padding-top: 5px;
+}

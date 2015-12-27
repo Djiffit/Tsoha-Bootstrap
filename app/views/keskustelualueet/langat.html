@@ -1,0 +1,27 @@
+{%extends "base.html" %}
+{% block content %}
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Otsikko</th>
+            <th style="text-align: center">Aloittaja</th>
+            <th style="text-align: center">Aloitusaika</th>
+        </tr>
+    </thead>
+    {% set id = ""%}
+    {% for keskustelualue in keskustelualue%}
+    {% set id = keskustelualue%}
+    <tbody>
+        <tr>
+            <td>{{keskustelualue.topic}}</td>
+            <td style="text-align: center">{{keskustelualue.starter}}</td>
+            <td style="text-align: center">{{keskustelualue.time}}</td>
+            <td style="text-align: center"><a href="/forum/langat/{{keskustelualue.id}}"<button type="button">Lue nyt</button></a>
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+<a href="{{base_path}}/uusi/ketju/{{id.subforum}}"<button class="btn btn-sm btn-primary">Luo uusi ketju</button></a>
+</p>
+
+{% endblock %}

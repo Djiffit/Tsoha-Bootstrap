@@ -1,0 +1,23 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container container-padding">
+    {% for keskustelualue in keskustelualueet %}
+    <div id="aiheet">
+        <div class="col-xs-5 col-lg-5 col-md-5">
+            <div class="unitlist">
+                <div class="thumbnail">
+                    <div class ="caption container-padding ">
+                        <h3><a href="{{base_path}}/aiheet/{{keskustelualue.id}}">{{keskustelualue.name}}</a></h3><br>
+
+                        <p>{{keskustelualue.description}}</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

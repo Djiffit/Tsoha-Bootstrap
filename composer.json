@@ -3,7 +3,11 @@
 		"classmap": [
 			"config/database.php",
 			"lib",
-			"app/controllers"
+			"app/controllers",
+                        "app/models/",
+                        "app/models/tili.php",
+                        "app/models/keskustelu.php",
+                        "app/models/"
 		]
 	},
 	"require": {

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Hei,{{nimi}}</h1>
+
+
+
+<h3>Viimeisimmät viestisi:</h3>
+
+<div class="container container-padding">
+    {% for viesti in viestit %}
+    <div class="row">
+        <div class="unitlist">
+            <div class="thumbnail ">
+                <div class ="caption">
+                    <p><b>{{viesti.author}}</b>, {{viesti.time}}<br></p>
+
+                    <p>{{viesti.content}}</p>
+                    <div id="menu">
+                        <ul>                            <li><button class="btn btn-primary btn-sm">Muokkaa</button></li>
+                            <li><button class="btn btn-danger btn-sm">Poista</button></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<h3>Vaihda tilisi nimi tai salasana:</h3><br>
+
+<div id="menu">
+    <ul>
+        <li> 
+            <div class="form">
+                <input type="text" class ="form-group-sm">
+                <label>Uusi nimi </label>
+            </div>
+            <button type="submit">Vaihda nimeä</button></li>
+        <li><div class="form">
+                <form>
+                    <input type="password">
+                    <label>Uusi salasana</label>
+                </form>
+            </div><button type="submit">Vaihda salasana</button></li>
+    </ul>
+</div>
+
+{% endblock %}
