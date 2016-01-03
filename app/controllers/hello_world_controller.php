@@ -28,23 +28,28 @@ class HelloWorldController extends BaseController {
         Kint::dump($viesti);
         $viesti = viesti::getMostRecent();
         Kint::dump($viesti);
+        $viesti = viesti::getByID(2);
+        Kint::dump($viesti);
         // Kint-luokan dump-metodi tulostaa muuttujan arvon
+//        Kint::dump($tili);
+//        $pekka = new tili(array(
+//            'name' => '..q',
+//            'password' => ' ..'
+//        ));
+//        $errors = $pekka->errors();
+//        Kint::dump($errors);
+//        $pekka = new viesti(array(
+//            'content' => '.q',
+//            'thread' => ''
+//        ));
+//        $errors = $pekka->errors();
+//
+//        Kint::dump($errors);
 
-
-        Kint::dump($tili);
-        $pekka = new tili(array(
-            'name' => '..q',
-            'password' => ' ..'
+        $keskustelu = new keskustelu(array(
+        'topic' => '12'
         ));
-        $errors = $pekka->errors();
-
-        Kint::dump($errors);
-        $pekka = new viesti(array(
-            'content' => '.q',
-            'thread' => ''
-        ));
-        $errors = $pekka->errors();
-
+        $errors = $keskustelu->errors();
         Kint::dump($errors);
     }
 

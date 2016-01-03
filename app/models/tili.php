@@ -33,6 +33,18 @@ class tili extends BaseModel {
 
         return $row['name'];
     }
+    
+    public static function getAccountByID($id) {
+        $query = DB::connection()->prepare('SELECT * from loggedin where id=:id');
+        $query ->execute(array('id' => $id));
+        $row = $query->fetch();
+        $tili = new tili(array(
+            'id' => $row['id'],
+            'name' => $row['name'],
+            'password' => $row['password']
+        ));
+        return $tili;
+    }
 
     public static function getUserByName($name) {
         $query = DB::connection()->prepare('SELECT * from Loggedin where name= :name');
@@ -43,7 +55,7 @@ class tili extends BaseModel {
             'id' => $row['id'],
             'name' => $row['name'],
             'password' => $row['password']
-        ));
+        )); 
         return $tili;
     }
 
@@ -73,7 +85,27 @@ class tili extends BaseModel {
         if (!ctype_alnum($this->password)) {
             $errors[] = 'Salasana saa sisältää vain numeroita ja kirjaimia!';
         }
-        return $errors;
+        return $errors; 
+    }
+    
+    public function update() {
+        
+    }
+    
+    public function autentikoi($tunnus, $salasana) {
+        $query = DB::connection()->prepare('SELECT * from Loggedin where name = :tunnus AND password = :salasana');
+        $query ->execute(array('tunnus' => $tunnus, 'salasana' => $salasana));
+        $row = $query->fetch();
+        if ($row) {
+            $tili = new tili(array(
+                'id' => $row['id'],
+                'name' => $row['name'],
+                'password' => $row['password']
+            ));
+            return $tili;
+        } else {
+            return NULL;
+        }
     }
 
 }

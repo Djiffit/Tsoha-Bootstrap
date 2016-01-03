@@ -27,25 +27,22 @@ class BaseModel {
     }
 
     public function errors() {
-        // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
-        $errors[] = array();
-        $virhe[] = array();
-
+//        // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
+        $errors = array();
         foreach ($this->validators as $validator) {
-            $metodi = $validator;
-            $virhe[] = $this->{$metodi}();
-            if (sizeof($virhe) > 0) {
-                foreach ($virhe as $v) {
-                    array_push($errors, $v);
-                }
-                
+            $errors = array_merge($errors, $this->{$validator}());
+            if (($this->{$validator}()) != NULL) {
+                $errors = array_merge($errors, $this->{$validator}());
+//                $errors[] = $this->{$validator}();
             }
-            $virhe = null;
-            $virhe = array();
-            // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
         }
-
-        return $errors;
+        $virheet = array();
+        foreach ($errors as $error) {
+            if (sizeof($error) >= 1 && !in_array($error, $virheet)) {
+                array_push($virheet, $error);
+            }
+        }
+        return $virheet;
     }
 
 }

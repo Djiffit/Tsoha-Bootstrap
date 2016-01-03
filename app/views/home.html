@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% if message %}
+<div class="alert alert-success">
+    <ul id="ilmoitusviesti">
+        <li>{{message}}</li>
+    </ul>
+</div>
+{% endif %}
 <div class="page-header">
     <h1>Tervetuloa pepefoorumille!   <img src="http://i.imgur.com/B1GiTPi.jpg"</img> </h1>
 </div>

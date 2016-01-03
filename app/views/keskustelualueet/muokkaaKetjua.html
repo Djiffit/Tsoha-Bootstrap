@@ -1,0 +1,32 @@
+{%extends "base.html" %}
+{% block content %}
+{% if errors %}
+
+<div class="alert alert-danger">
+    <ul id="ilmoitusviesti">
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{%for keskustelu in keskustelu %}
+<h1>Muokataan keskustelua {{keskustelu.topic}}</h1>
+
+<p>Keskustelu luotu {{keskustelu.time}}</p>
+<form method="post" action="{{base_path}}/lanka/edit/{{keskustelu.id}}">
+    <div class="form-group">
+        <label>Otsikko</label>
+        <textarea name="viesti" class="form-control" id="viesti" cols="15" rows="13">{%if params%}
+{{params.viesti}}{%else%}{{keskustelu.topic}}{%endif%}</textarea>
+    </div>
+    <div class="form-group">
+        <label>Alkuperäinen otsikko</label>
+        <textarea class="form-control"readonly>{{keskustelu.topic}}</textarea>
+
+    </div>
+    <button class="btn btn-default">Tallenna otsikko</button>
+</form>
+{%endfor%}
+
+{% endblock %}

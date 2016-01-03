@@ -1,5 +1,6 @@
 {%extends "base.html" %}
 {% block content %}
+
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
@@ -13,15 +14,22 @@
     {% set id = keskustelualue%}
     <tbody>
         <tr>
-            <td>{{keskustelualue.topic}}</td>
+            <td>{{keskustelualue.topic}}
+                <div  class="btn-group btn-group-xs pull-right" role="group">
+                    {% if (keskustelualue.starter == user_logged_in.name or user_logged_in.id == 1) %}
+                    <a href="{{base_path}}/lanka/edit/{{keskustelualue.id}}"<button type="button" class="btn btn-default btn-xs"">Muokkaa</button></a>
+                    <a href="{{base_path}}/lanka/kill/{{keskustelualue.id}}"<button type="button" class="btn btn-default btn-xs"">Poista</button></a>
+                    {%endif%}
+                </div>
+            </td>
             <td style="text-align: center">{{keskustelualue.starter}}</td>
             <td style="text-align: center">{{keskustelualue.time}}</td>
-            <td style="text-align: center"><a href="/forum/langat/{{keskustelualue.id}}"<button type="button">Lue nyt</button></a>
+            <td style="text-align: center"><a href="/forum/langat/{{keskustelualue.id}}"<button type="button" class="btn btn-primary btn-xs">Lue nyt</button></a>
         </tr>
     </tbody>
     {% endfor %}
 </table>
-<a href="{{base_path}}/uusi/ketju/{{id.subforum}}"<button class="btn btn-sm btn-primary">Luo uusi ketju</button></a>
+<a href="{{base_path}}/uusi/ketju/{{id.subforum}}"<button class="btn btn-sm pull-left btn-primary">Luo uusi ketju</button></a>
 </p>
 
 {% endblock %}

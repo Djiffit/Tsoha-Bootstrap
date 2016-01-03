@@ -1,12 +1,19 @@
 {%extends "base.html" %}
 {% block content %} 
 {% set lanka = ""%}
-{% set otsikko = ""%}
 {% for viesti in viestit %}
 {% set lanka = viesti.thread%}
-{% set otsikko = viesti.id%}
 {% endfor %}
-<a href="{{base_path}}/uusi/viesti/{{otsikko}}"<button class="btn btn-sm pull-right btn-primary">Vastaa ketjuun</button></a>
+
+{% if message %}
+<div class="alert alert-success">
+    <ul id="ilmoitusviesti">
+        <li>{{message}}</li>
+    </ul>
+</div>
+{% endif %}
+
+<a href="{{base_path}}/uusi/viesti/{{lankaid}}"<button class="btn btn-sm pull-right btn-primary">Vastaa ketjuun</button></a>
 <h3>{{lanka}}</h3>
 
 {% set lanka = ""%}
@@ -15,7 +22,6 @@
 <div class="container container-padding">
     <div>
         <div>
-
             <div class="unitlist">
 
                 <div class="thumbnail" style="max-width: 100%">
@@ -23,10 +29,12 @@
                     <div class ="caption">
                         <div class="panel panel-info">
                             <div class="panel-heading"><b>{{viesti.author}}</b>, {{viesti.time}} <div  class="btn-group btn-group-xs pull-right" role="group">
-                                    <button type="button" class="btn btn-default" class="btn-xs">Muokkaa</button>
-                                    <button type="button" class="btn btn-default" class="btn-xs">Poista</button>
+                                    {% if (viesti.author == user_logged_in.name or user_logged_in.id == 1) %}
+                                    <a href="{{base_path}}/viesti/edit/{{viesti.id}}"<button type="button" class="btn btn-default" class="btn-xs">Muokkaa</button></a>
+                                    <a href="{{base_path}}/viesti/kill/{{viesti.id}}"<button type="button" class="btn btn-default" class="btn-xs">Poista</button></a>
+                                    {%endif%}
                                 </div></div>
-                            <div class="panel-body">
+                            <div class="panel-body" id="paragraafi">
                                 {{viesti.content}} 
                             </div>
                         </div>
@@ -59,6 +67,6 @@
     {%endfor%}-->
 
 
-<a href="{{base_path}}/uusi/viesti/{{lanka}}"<button class="btn btn-sm btn-primary">Vastaa ketjuun</button></a>
+<a href="{{base_path}}/uusi/viesti/{{lankaid}}"<button class="btn btn-sm btn-primary">Vastaa ketjuun</button></a>
 
 {% endblock %}

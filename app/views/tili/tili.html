@@ -1,28 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Hei,{{nimi}}</h1>
+<h1>{{nimi}}</h1>
 
 
 
-<h3>Viimeisimmät viestisi:</h3>
+<h3>Viimeisimmät viestit:</h3>
 
 <div class="container container-padding">
     {% for viesti in viestit %}
-    <div class="row">
-        <div class="unitlist">
-            <div class="thumbnail ">
-                <div class ="caption">
-                    <p><b>{{viesti.author}}</b>, {{viesti.time}}<br></p>
+    <div class="container container-padding">
+        <div>
+            <div>
+                <div class="unitlist">
 
-                    <p>{{viesti.content}}</p>
-                    <div id="menu">
-                        <ul>                            <li><button class="btn btn-primary btn-sm">Muokkaa</button></li>
-                            <li><button class="btn btn-danger btn-sm">Poista</button></li>
-                        </ul>
+                    <div class="thumbnail" style="max-width: 100%">
+
+                        <div class ="caption">
+                            <div class="panel panel-info">
+                                <div class="panel-heading"><b>{{viesti.author}}</b>, {{viesti.time}} <div  class="btn-group btn-group-xs pull-right" role="group">
+
+                                        <a href="{{base_path}}/viesti/edit/{{viesti.id}}"<button type="button" class="btn btn-default" class="btn-xs">Muokkaa</button></a>
+                                        <a href="{{base_path}}/viesti/kill/{{viesti.id}}"<button type="button" class="btn btn-default" class="btn-xs">Poista</button></a>
+
+                                    </div></div>
+                                <div class="panel-body" id="paragraafi">
+                                    {{viesti.content}} 
+                                </div>
+                            </div>
+                            <!--                        <p><b>{{viesti.author}}</b>, {{viesti.time}}<br></p>
+                                                    <div id="paragraafi">
+                                                        <p>{{viesti.content}}</p>
+                                                    </div>-->
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -30,21 +42,17 @@
 </div>
 <h3>Vaihda tilisi nimi tai salasana:</h3><br>
 
-<div id="menu">
-    <ul>
-        <li> 
-            <div class="form">
-                <input type="text" class ="form-group-sm">
-                <label>Uusi nimi </label>
-            </div>
-            <button type="submit">Vaihda nimeä</button></li>
-        <li><div class="form">
-                <form>
-                    <input type="password">
-                    <label>Uusi salasana</label>
-                </form>
-            </div><button type="submit">Vaihda salasana</button></li>
-    </ul>
-</div>
+<form method="post" action="{{base_path}}/tili" class="form-inline">
+    <div class="form-group">
+        <input type="text" class="form-control" name="nimi" placeholder="Tunnus">
+    </div>
+    <button type="submit" class="btn btn-default">Vaihda nimeä</button>
+</form>
+<form method="post" action="{{base_path}}/tili" class="form-inline">
+    <div class="form-group">
+        <input type="password" class="form-control" name="salasana" placeholder="Salasana">
+    </div>
+    <button type="submit" class="btn btn-default">Vaihda salasanaa</button>
+</form>
 
 {% endblock %}

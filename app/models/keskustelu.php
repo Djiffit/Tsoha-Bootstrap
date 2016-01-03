@@ -6,6 +6,8 @@ class keskustelu extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
+        
+        $this->validators = array('validateTopic');
     }
 
     public static function getTopic($id) {
@@ -96,11 +98,34 @@ class keskustelu extends BaseModel {
         return $keskustelut;
     }
 
+    public function validateTopic() {
+        $errors[] = array();
+        if (!BaseModel::validateLength($this->topic, 5, 50)) {
+            $errors[] = 'Otsikon tulee olla ainakin 5 merkkiä ja alle 50 merkkiä pitkä';
+        }
+        return $errors;
+    }
+
     public function save() {
         $query = DB::connection()->prepare('INSERT INTO Thread (subforum, time, topic, starter) VALUES (:subforum, :time, :topic, :starter) RETURNING id');
         $query->execute(array('subforum' => $this->subforum, 'time' => $this->time, 'topic' => $this->topic, 'starter' => $this->starter));
         $row = $query->fetch();
         $this->id = $row['id'];
+    }
+    
+    public function update() {
+        $query = DB::connection()->prepare('UPDATE thread SET topic = :topic where id= :id;');
+        $query->execute(array('id' => $this->id, 'topic' => $this->topic));
+        $row = $query->fetch();
+    }
+
+    public function delete() {
+        $query = DB::connection()->prepare('DELETE from message where thread = :id');
+        $query->execute(array('id' => $this->id));
+        $row = $query->fetch();
+        $query = DB::connection()->prepare('DELETE from thread where id=:id');
+        $query->execute(array('id' => $this->id));
+        $row = $query->fetch();
     }
 
 }

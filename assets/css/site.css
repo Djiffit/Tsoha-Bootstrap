@@ -27,6 +27,10 @@
     display: inline;
 }
 
+#ilmoitusviesti li{
+    list-style-type: none;
+}
+
 #paragraafi {
    word-wrap: break-word;
    width: 100%;
