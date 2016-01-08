@@ -12,12 +12,12 @@
 
 {% for keskustelu in keskustelu %}
 <h3>Luodaan uusi viesti keskusteluun {{keskustelu.topic}} alueelle {{keskustelu.subforum}}</h3>
-<p>Viestin minimipituus on 5 merkkiä.</p>
+<p>Viestin minimipituus on 5  merkkiä.</p>
 <form method="post" action="{{base_path}}/lanka/{{keskustelu.id}}">
     <div class="form-group">
         <div class="form-group">
             <label>Viesti</label>
-            <textarea name="viesti" class="form-control" id="viesti" cols="15" rows="13">{{params.viesti}}</textarea>
+            <textarea name="viesti" class="form-control" id="viesti" cols="15" rows="13" >{{params.viesti}}</textarea>
         </div>
 
         <div class="form-grop">

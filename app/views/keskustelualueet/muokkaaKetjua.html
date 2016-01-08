@@ -10,8 +10,9 @@
     </ul>
 </div>
 {% endif %}
-{%for keskustelu in keskustelu %}
+{%for keskustelu in keskustelu%}
 <h1>Muokataan keskustelua {{keskustelu.topic}}</h1>
+
 
 <p>Keskustelu luotu {{keskustelu.time}}</p>
 <form method="post" action="{{base_path}}/lanka/edit/{{keskustelu.id}}">
@@ -27,6 +28,5 @@
     </div>
     <button class="btn btn-default">Tallenna otsikko</button>
 </form>
-{%endfor%}
-
+{% endfor %}
 {% endblock %}

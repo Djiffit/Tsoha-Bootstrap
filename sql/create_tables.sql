@@ -26,7 +26,7 @@ CREATE TABLE Message(
   thread INTEGER REFERENCES Thread(id)
 );
 
-CREATE TABLE Replier(
-  authorid INTEGER REFERENCES Loggedin(id),
+CREATE TABLE Favorite(
+  userid INTEGER REFERENCES Loggedin(id),
   threadid INTEGER REFERENCES Thread(id)
 );

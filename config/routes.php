@@ -18,16 +18,36 @@ $routes->get('/keskustelualueet/:id', function($id) {
     keskustelualueenluoja::luoAliFoorumi($id);
 });
 
+$routes->get('/logout', function() {
+    profiilinhallitsija::kirjauduUlos();
+});
+
 $routes->post('/langat/:id', function($id) {
     keskustelualueenluoja::luoKetju($id);
 });
 
-$routes->get('/lanka/edit/:id', function($id) {
-    keskustelualueenluoja::luoKetjunEditoija($id);
+$routes->post('/langat/:id', function($id) {
+    keskustelualueenluoja::luoKetju($id);
+});
+
+$routes->post('/suosikit/lisaa', function() {
+    profiilinhallitsija::lisaaSuosikki();
 });
 
 $routes->post('/lanka/edit/:id', function($id) {
     keskustelualueenluoja::editoiKetjua($id);
+});
+
+$routes->post('/suosikit/poista', function() {
+    profiilinhallitsija::suosikinPoisto();
+});
+
+$routes->post('/login/register', function() {
+    profiilinhallitsija::luoTunnus();
+});
+
+$routes->get('/lanka/edit/:id', function($id) {
+    keskustelualueenluoja::luoKetjunEditoija($id);
 });
 
 $routes->get('/lanka/kill/:id', function($id) {
@@ -70,10 +90,6 @@ $routes->get('/langat/:id', function($id) {
     keskustelualueenluoja::luoLanka($id);
 });
 
-$routes->get('/login', function() {
-    HelloWorldController::login();
-});
-
 $routes->get('/langat', function() {
     HelloWorldController::langat();
 });
@@ -88,6 +104,14 @@ $routes->post('/login/', function() {
 
 $routes->get('/login/', function() {
     profiilinhallitsija::loginSivu();
+});
+
+$routes->get('/suosikit/', function() {
+    profiilinhallitsija::suosikinLuoja();
+});
+
+$routes->post('/suosikit/', function() {
+    profiilinhallitsija::suosikinPoistaja();
 });
 
 $routes->get('/tili/muokkaa', function() {

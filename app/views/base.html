@@ -42,10 +42,10 @@
                         <li><a href="/forum/">Etusivu</a></li>
                         <li><a href="/forum/aiheet">Aiheet</a></li>
                         <li><a href="/forum/tili/">Profiili</a></li>
-                        <li><a href="/forum/tili/">Suosikit</a></li>
+                        <li><a href="/forum/suosikit/">Suosikit</a></li>
                     </ul>
                     {%if user_logged_in%}
-                    <p class="navbar-right navbar-text">Hei, {{user_logged_in.name}}</p>
+                    <p class="navbar-right navbar-text">{{user_logged_in.name}}   <a href="{{base_path}}/logout"<button type="button" class="btn btn-default btn-xs"">Kirjaudu ulos</button></a></p>
                     
                     {%else%}
                     <form method="post" action="{{base_path}}/login" class="navbar-form navbar-right">

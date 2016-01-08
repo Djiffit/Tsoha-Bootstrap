@@ -48,21 +48,21 @@ class keskustelu extends BaseModel {
         return $keskustelu;
     }
 
-    public static function getBeforeDate($date) {
-        $query = DB::connection()->prepare("SELECT * FROM Thread where time < :day::date");
-        $query->execute(array('day' => $date));
-        $rows = $query->fetchAll();
-        $keskustelut = array();
-        foreach ($rows as $row) {
-            $keskustelut[] = new keskustelu(array(
-                'id' => $row['id'],
-                'topic' => $row['topic'],
-                'subforum' => $row['subforum'],
-                'starter' => $row['starter'],
-                'time' => $row['time']
-            ));
-        }
-    }
+//    public static function getBeforeDate($date) {
+//        $query = DB::connection()->prepare("SELECT * FROM Thread where time < :day::date");
+//        $query->execute(array('day' => $date));
+//        $rows = $query->fetchAll();
+//        $keskustelut = array();
+//        foreach ($rows as $row) {
+//            $keskustelut[] = new keskustelu(array(
+//                'id' => $row['id'],
+//                'topic' => $row['topic'],
+//                'subforum' => $row['subforum'],
+//                'starter' => $row['starter'],
+//                'time' => $row['time']
+//            ));
+//        }
+//    }
 
     public static function getBySubForum($id) {
         $query = DB::connection()->prepare('SELECT * FROM Thread where subforum = :id order by time desc');

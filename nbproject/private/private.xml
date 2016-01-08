@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/views/keskustelualueet/lanka.html</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/views/etusivu.html</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/lib/base_model.php</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/views/keskustelualueet/langat.html</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/views/keskustelualueet/keskustelualueet.html</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/controllers/etusivunvalitsija.php</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/assets/css/site.css</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/config/routes.php</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/sql/create_tables.sql</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/views/keskustelualueet/uusiketju.html</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/models/suosikki.php</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/models/viesti.php</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/views/home.html</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/views/keskustelualueet/muokkaa.html</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/models/tili.php</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/controllers/profiilinhallitsija.php</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/views/tili/suosikit.html</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/lib/base_controller.php</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/views/tili/login.html</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/views/keskustelualueet/muokkaaKetjua.html</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/controllers/hello_world_controller.php</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/models/keskustelualue.php</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/views/helloworld.html</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/models/keskustelu.php</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/views/tili/tili.html</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/views/kokeilu.html</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/views/keskustelualueet/uusiviesti.html</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/views/base.html</file>
+            <file>file:/home/konstaku/Documents/tsoha/Tsoha-Bootstrap/app/controllers/keskustelualueenluoja.php</file>
+        </group>
+    </open-files>
+</project-private>

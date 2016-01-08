@@ -2,6 +2,14 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% if message %}
+<div class="alert alert-success">
+    <ul id="ilmoitusviesti">
+        <li>{{message}}</li>
+    </ul>
+</div>
+{% endif %}
+
 <div class="container container-padding">
     {% for keskustelualue in keskustelualueet %}
     <div id="aiheet">
@@ -10,9 +18,9 @@
                 <div class="thumbnail">
                     <div class ="caption container-padding ">
                         <h3><a href="{{base_path}}/aiheet/{{keskustelualue.id}}">{{keskustelualue.name}}</a></h3><br>
-
-                        <p>{{keskustelualue.description}}</p>
-
+                        <div class="panel-body" id="paragraafi">
+                            <p>{{keskustelualue.description}}</p>
+                        </div>
                     </div>
                 </div>
             </div>

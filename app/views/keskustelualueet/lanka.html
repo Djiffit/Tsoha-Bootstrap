@@ -12,40 +12,46 @@
     </ul>
 </div>
 {% endif %}
+<div  class="btn-group btn-group-xs pull-right" role="group">
+    {% if user_logged_in %}
+    <form method="post">
+        <a href="{{base_path}}/uusi/viesti/{{lankaid}}"<button class="btn btn-xs pull-right btn-primary">Vastaa ketjuun</button></a>
+        {% if suosikki == false %}
+        <button type="submit" formaction="{{base_path}}/suosikit/lisaa" name="id" value="{{lankaid}}" class="btn btn-success btn-xs">Suosikkeihin</button>
+        {%else%}
+        <button type="submit" class="btn btn-danger btn-xs" value="{{lankaid}}" name="id" formaction="{{base_path}}/suosikit/poista">Poista suosikeista</button>
+        {% endif%}
+    </form>
+    {%endif%}
 
-<a href="{{base_path}}/uusi/viesti/{{lankaid}}"<button class="btn btn-sm pull-right btn-primary">Vastaa ketjuun</button></a>
+</div>
+
 <h3>{{lanka}}</h3>
 
 {% set lanka = ""%}
 {% for viesti in viestit %}
 {% set lanka = viesti.id%}
 <div class="container container-padding">
-    <div>
-        <div>
-            <div class="unitlist">
 
-                <div class="thumbnail" style="max-width: 100%">
-
-                    <div class ="caption">
-                        <div class="panel panel-info">
-                            <div class="panel-heading"><b>{{viesti.author}}</b>, {{viesti.time}} <div  class="btn-group btn-group-xs pull-right" role="group">
-                                    {% if (viesti.author == user_logged_in.name or user_logged_in.id == 1) %}
-                                    <a href="{{base_path}}/viesti/edit/{{viesti.id}}"<button type="button" class="btn btn-default" class="btn-xs">Muokkaa</button></a>
-                                    <a href="{{base_path}}/viesti/kill/{{viesti.id}}"<button type="button" class="btn btn-default" class="btn-xs">Poista</button></a>
-                                    {%endif%}
-                                </div></div>
-                            <div class="panel-body" id="paragraafi">
-                                {{viesti.content}} 
-                            </div>
-                        </div>
-                        <!--                        <p><b>{{viesti.author}}</b>, {{viesti.time}}<br></p>
-                                                <div id="paragraafi">
-                                                    <p>{{viesti.content}}</p>
-                                                </div>-->
-                    </div>
+    <div class ="caption">
+        <div class="panel panel-info">
+            <div class="panel-heading"><b>{{viesti.author}}</b>, {{viesti.time}} 
+                <div  class="btn-group btn-group-xs pull-right" role="group">
+                    {% if (viesti.author == user_logged_in.name or user_logged_in.id == 1) %}
+                    <a href="{{base_path}}/viesti/edit/{{viesti.id}}"<button type="button" class="btn btn-default" class="btn-xs">Muokkaa</button></a>
+                    <a href="{{base_path}}/viesti/kill/{{viesti.id}}"<button type="button" class="btn btn-default" class="btn-xs">Poista</button></a>
+                    {%endif%}
                 </div>
             </div>
+            <div class="panel-body">
+                <pre id="tekstilaatikko">{{viesti.content}}
+                </pre>
+            </div>
         </div>
+        <!--                        <p><b>{{viesti.author}}</b>, {{viesti.time}}<br></p>
+                                <div id="paragraafi">
+                                    <p>{{viesti.content}}</p>
+                                </div>-->
     </div>
 </div>
 {% endfor %}

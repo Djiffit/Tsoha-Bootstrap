@@ -14,9 +14,13 @@ class keskustelualueenluoja extends BaseController {
 
     public function luoLanka($id) {
         $viestit = viesti::getByThread($id);
-
         $lankaid = $id;
-        View::make('keskustelualueet/lanka.html', array('viestit' => $viestit, 'lankaid' => $lankaid));
+        if (self::get_user_logged_in()) {
+            $suosikki = suosikki::isSuosikki(self::get_user_logged_in()->id, $id);
+            View::make('keskustelualueet/lanka.html', array('viestit' => $viestit, 'lankaid' => $lankaid, 'suosikki' => $suosikki));
+        } else {
+            View::make('keskustelualueet/lanka.html', array('viestit' => $viestit, 'lankaid' => $lankaid));
+        }
     }
 
     public function luoUusiKetju($id) {
@@ -69,10 +73,9 @@ class keskustelualueenluoja extends BaseController {
         $lanka = keskustelu::getThreadById($id);
         $lanka = new keskustelu(array(
             'id' => $id
-                )
-        );
+        ));
         $lanka->delete();
-        Redirect::to('/aiheet/', array('message' => 'Viesti poistettu onnistuneesti!'));
+        Redirect::to('/aiheet/', array('message' => 'Ketju poistettu onnistuneesti!'));
     }
 
     public function tapaViesti($id) {
@@ -85,8 +88,12 @@ class keskustelualueenluoja extends BaseController {
             'author' => $row['author'],
             'thread' => $row['thread']
         ));
-        $viesti->delete();
-        Redirect::to('/langat/' . $lanka, array('message' => 'Viesti poistettu onnistuneesti!'));
+        if ($viesti->author == self::get_user_logged_in()->id || self::get_user_logged_in()->id == 1) {
+            $viesti->delete();
+            Redirect::to('/langat/' . $lanka, array('message' => 'Viesti poistettu onnistuneesti!'));
+        } else {
+            Redirect::to('/', array('message' => 'Ei valtuuksia toimintoon!'));
+        }
     }
 
     public function luoMuokattuViesti($id) {

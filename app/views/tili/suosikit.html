@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+{% if message %}
+<div class="alert alert-success">
+    <ul id="ilmoitusviesti">
+        <li>{{message}}</li>
+    </ul>
+</div>
+{% endif %}
+<h3>Suosikkiketjusi:</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Otsikko</th>
+                <th>Alue</th>
+            </tr>
+        </thead>
+        {% for keskustelut in keskustelut %}
+        <tbody>
+            <tr>
+                <td>
+                    <a href="/forum/langat/{{keskustelut.id}}" <p>{{keskustelut.topic}}</p> </a>
+                    </td>
+                <td>{{keskustelut.subforum}}</td>
+                <td>
+                    <form method="post">
+                        <button type="submit" class="btn btn-danger btn-xs" value="{{keskustelut.id}}" name="id" formaction="{{base_path}}/suosikit/">Poista suosikeista</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+        {%endfor%}
+    </table>
+
+
+{% endblock %}

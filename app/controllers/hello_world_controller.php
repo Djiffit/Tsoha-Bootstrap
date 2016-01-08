@@ -9,14 +9,12 @@ class HelloWorldController extends BaseController {
 
     public static function sandbox() {
         // Testaa koodiasi täällä
-        $keskustelu = keskustelu::getTopic(5);
+        $keskustelu = keskustelu::getTopic(80);
         Kint::dump($keskustelu);
-        $keskustelu = keskustelu::getThreadById(5);
+        $keskustelu = keskustelu::getThreadById(78);
         Kint::dump($keskustelu);
         $keskustelualue = keskustelualue::all();
         Kint::dump($keskustelualue);
-        $keskustelu = keskustelu::getBeforeDate("'2015-12-30'");
-        Kint::dump($keskustelu);
         $keskustelu = keskustelu::getBySubForum(2);
         Kint::dump($keskustelu);
         $tili = tili::all();
@@ -47,10 +45,12 @@ class HelloWorldController extends BaseController {
 //        Kint::dump($errors);
 
         $keskustelu = new keskustelu(array(
-        'topic' => '12'
+            'topic' => '12'
         ));
         $errors = $keskustelu->errors();
         Kint::dump($errors);
+        $suosikki = suosikki::getSuosikitID(1);
+        Kint::dump($suosikki);
     }
 
     public static function login() {
