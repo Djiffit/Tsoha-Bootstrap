@@ -9,7 +9,7 @@ Yleisiä linkkejä:
 
 ## Työn aihe
 
-Verkkosivulla toimiva keskustelupalsta. Keskustelupalstan käyttäjät voivat aloittaa keskusteluita, lisätä poistaa ja muokata viestejään. Kaikki keskustelupalstan käyttäjät, sekä kirjautuneet että muut käyttäjät voivat selata keskusteluita. Kaikista keskusteluista on myös nähtävissä lista niiden osanottajista. Keskusteluja valvoo moderaattorit, jotka voivat poistaa tilejä, viestejä ja keskusteluja.
+Verkkosivulla toimiva keskustelupalsta. Keskustelupalstan käyttäjät voivat aloittaa keskusteluita, lisätä poistaa ja muokata viestejään. Kaikki keskustelupalstan käyttäjät, sekä kirjautuneet että muut käyttäjät voivat selata keskusteluita. Keskusteluja valvoo moderaattorit, jotka voivat poistaa tilejä, viestejä ja keskusteluja.
 
 Toimintoja:
 
