@@ -37,7 +37,7 @@
         <div class="panel panel-info">
             <div class="panel-heading"><b>{{viesti.author}}</b>, {{viesti.time}} 
                 <div  class="btn-group btn-group-xs pull-right" role="group">
-                    {% if (viesti.author == user_logged_in.name or user_logged_in.id == 1) %}
+                    {% if (viesti.author == user_logged_in.name or user_logged_in.moderator == 1) %}
                     <a href="{{base_path}}/viesti/edit/{{viesti.id}}"<button type="button" class="btn btn-default" class="btn-xs">Muokkaa</button></a>
                     <a href="{{base_path}}/viesti/kill/{{viesti.id}}"<button type="button" class="btn btn-default" class="btn-xs">Poista</button></a>
                     {%endif%}
@@ -48,29 +48,9 @@
                 </pre>
             </div>
         </div>
-        <!--                        <p><b>{{viesti.author}}</b>, {{viesti.time}}<br></p>
-                                <div id="paragraafi">
-                                    <p>{{viesti.content}}</p>
-                                </div>-->
     </div>
 </div>
 {% endfor %}
-<!--    {%for viesti in viestit %}
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h4 class="panel-title">{{viesti.author}}, {{viesti.time}}</h4>
-        </div>
-        <div class="panel-body">
-            {{viesti.content}}
-                                <div id="menu">
-                        <ul>                            
-                            <li><button class="btn btn-primary btn-xs">Muokkaa</button></li>
-                            <li><button class="btn btn-danger btn-xs">Poista</button></li>
-                        </ul>
-
-        </div>
-    </div>
-    {%endfor%}-->
 
 
 <a href="{{base_path}}/uusi/viesti/{{lankaid}}"<button class="btn btn-sm btn-primary">Vastaa ketjuun</button></a>

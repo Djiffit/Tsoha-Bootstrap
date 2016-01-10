@@ -9,25 +9,25 @@ class HelloWorldController extends BaseController {
 
     public static function sandbox() {
         // Testaa koodiasi täällä
-        $keskustelu = keskustelu::getTopic(80);
+        $keskustelu = Keskustelu::getTopic(80);
         Kint::dump($keskustelu);
-        $keskustelu = keskustelu::getThreadById(78);
+        $keskustelu = Keskustelu::keskusteluIdAvulla(78);
         Kint::dump($keskustelu);
-        $keskustelualue = keskustelualue::all();
+        $keskustelualue = Keskustelualue::all();
         Kint::dump($keskustelualue);
-        $keskustelu = keskustelu::getBySubForum(2);
+        $keskustelu = Keskustelu::keskusteluAlifooruminAvulla(2);
         Kint::dump($keskustelu);
-        $tili = tili::all();
+        $tili = Tili::all();
         Kint::dump($tili);
-        $tili = tili::getUserByID(2);
+        $tili = Tili::getKayttajaIDlla(2);
         Kint::dump($tili);
-        $tili = tili::getUserByName('Pekka');
-        $viesti = viesti::getByAuthor(2);
+        $viesti = Viesti::haeTekijalla(2);
         Kint::dump($viesti);
-        $viesti = viesti::getMostRecent();
+        $viesti = Viesti::tuoreimmat();
         Kint::dump($viesti);
-        $viesti = viesti::getByID(2);
+        $viesti = Viesti::haeIDlla(211);
         Kint::dump($viesti);
+        Kint::dump($viesti[0]->id);
         // Kint-luokan dump-metodi tulostaa muuttujan arvon
 //        Kint::dump($tili);
 //        $pekka = new tili(array(
@@ -44,12 +44,12 @@ class HelloWorldController extends BaseController {
 //
 //        Kint::dump($errors);
 
-        $keskustelu = new keskustelu(array(
+        $keskustelu = new Keskustelu(array(
             'topic' => '12'
         ));
         $errors = $keskustelu->errors();
         Kint::dump($errors);
-        $suosikki = suosikki::getSuosikitID(1);
+        $suosikki = Suosikki::getSuosikitID(1);
         Kint::dump($suosikki);
     }
 

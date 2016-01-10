@@ -1,6 +1,6 @@
 <?php
 
-class suosikki extends BaseModel {
+class Suosikki extends BaseModel {
 
     public $threadid, $userid;
 
@@ -14,7 +14,7 @@ class suosikki extends BaseModel {
         $rows = $query->fetchAll();
         $suosikit[] = array();
         foreach ($rows as $row) {
-            $keskustelut = keskustelu::getThreadById($row['threadid']);
+            $keskustelut = Keskustelu::keskusteluIdAvulla($row['threadid']);
             foreach ($keskustelut as $keskustelu) {
                 if (count($keskustelu) > 0) {
                     $suosikit[] = $keskustelu;
@@ -28,13 +28,11 @@ class suosikki extends BaseModel {
     public function save() {
         $query = DB::connection()->prepare('INSERT INTO Favorite (userid, threadid) VALUES (:userid, :threadid)');
         $query->execute(array('threadid' => $this->threadid, 'userid' => $this->userid));
-        $row = $query->fetch();
     }
 
     public function delete() {
         $query = DB::connection()->prepare('DELETE from Favorite where threadid = :threadid and userid = :userid');
         $query->execute(array('userid' => $this->userid, 'threadid' => $this->threadid));
-        $row = $query->fetch();
     }
     
     public function isSuosikki($user, $thread) {

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+{% if message %}
+<div class="alert alert-success">
+    <ul id="ilmoitusviesti">
+        <li>{{message}}</li>
+    </ul>
+</div>
+{% endif %}
+<table class="table table-condensed" style="width: auto">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nimi</th>
+            <th>Moderaattori</th>
+        </tr>
+    </thead>
+    {% for tili in tilit %}
+    <tbody>
+        <tr>
+            <td>{{tili.id}}</td>
+            <td>{{tili.name}}</td>
+            <td style="text-align: center">{% if (tili.moderator == 1) %}Kyllä{%else%}Ei{%endif%}</td>
+            {% if (user_logged_in.moderator ==1) %}
+            <td><form method="post"><button type="submit" formaction="{{base_path}}/tilit/kill" name="id" value="{{tili.id}}" class="btn btn-danger btn-xs">Poista tili</button></form> </td>
+            {%endif%}
+    </tbody>
+    {% endfor %}
+</table>
+{% endblock %}

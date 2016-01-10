@@ -1,4 +1,4 @@
-INSERT INTO Loggedin (name, password) VALUES ('Antero', 'oretna');
+INSERT INTO Loggedin (name, password, moderator) VALUES ('Antero', 'oretna', 1);
 INSERT INTO Loggedin (name, password) VALUES ('Pekka', 'Juhani');
 INSERT INTO Loggedin (name, password) VALUES ('Feaasd', 'dsdfa');
 INSERT INTO Loggedin (name, password) VALUES ('Koeer', 'ascxzzxc');
@@ -8,18 +8,28 @@ INSERT INTO Loggedin (name, password) VALUES ('Halleru', 'noansovnsdoiv');
 INSERT INTO Loggedin (name, password) VALUES ('Nipperu', 'kiirasvuosi');
 INSERT INTO Loggedin (name, password) VALUES ('Jauajayauau', 'voopirre');
 INSERT INTO Loggedin (name, password) VALUES ('Anselmi', 'Antoisauhani');
-INSERT INTO Subforum (name, description) VALUES ('banaanipepe', 'Sauhunaama on liikkeellä');
-INSERT INTO Subforum (name, description) VALUES ('Makaroonilaatikko', 'Sauhunaama on liikkeelsdfasdfasdfasdasdfasdflä');
+INSERT INTO Loggedin (id, name, password, moderator) VALUES (999, '<<TILI POISTETU>>', 'dead', 1);
+insert into subforum (name, description) values ('Kiivas Viisikko', 'Hihnavyö painaa valtavasti');
+insert into subforum (name, description) values ('Antoisaa maanantaita', 'Kipupiste saavutetaan joka päivä');
+INSERT INTO Subforum (name, description) VALUES ('Banaanipepe', 'Sauhunaama on liikkeellä');
+INSERT INTO Subforum (name, description) VALUES ('Makaroonilaatikko', 'Uuni paistuu paistuu ohoh');
 INSERT INTO Subforum (name, description) VALUES ('Sudokusuihke', 'Sauhunaama on lisdfasdfsaffsdfikkeellä');
 INSERT INTO Subforum (name, description) VALUES ('Vaaran tiellä', 'Sauhunaamfafasda on liikkeellä');
-INSERT INTO Thread (subforum, time, topic, starter) VALUES (1, '2015-12-24 10:03:40.853087', 'Harvinaisia pepejä 3SIPULISIPULI€/kpl', 1); 
-INSERT INTO Thread (subforum, time, topic, starter) VALUES (2, '2015-12-25 10:03:40.853087', 'SIPULISIPULIHarvinaisia psdvsdavsepejä 3€/kpl', 2); 
-INSERT INTO Thread (subforum, time, topic, starter) VALUES (3, '2015-12-26 10:03:40.853087', 'HarvinaSIPULISIPULISIPULIisivsa pepejäsadvsadvsadv 3€/kpl', 3); 
-INSERT INTO Thread (subforum, time, topic, starter) VALUES (4, '2015-12-27 10:03:40.853087', 'HarvinaisiadsdavaSIPULISIPULsdfafIsdvsadvvsa pepejä 3€/kpl', 4); 
-INSERT INTO Thread (subforum, time, topic, starter) VALUES (1, '2015-12-28 10:03:40.853087', 'sadv pesdvavsdavsSIPULISIPULIdavsdvsdvpejä 3€/kpl', 1); 
-INSERT INTO Thread (subforum, time, topic, starter) VALUES (2, '2015-12-29 10:03:40.853087', 'HarviSIPULISIPULInaisadvia asdvsdvasdvpepejä 3€/kpl', 4); 
-INSERT INTO Thread (subforum, time, topic, starter) VALUES (3, '2015-12-30 10:03:40.853087', 'Harvinaisdavssdvia pepejä 3€/SIPULIkpl', 6); 
-INSERT INTO Thread (subforum, time, topic, starter) VALUES (4, '2015-12-31 10:03:40.853087', 'Harvinaissdvasdavsdavsia peSIPULISIPULIpejä 3€/kpl', 8); 
+INSERT INTO Thread (subforum, time, topic, starter) VALUES (1, '2015-12-24 10:03:40', 'Harvinaisia pepejä 3SIPULISIPULI€/kpl', 1); 
+INSERT INTO Thread (subforum, time, topic, starter) VALUES (2, '2015-12-25 10:03:40', 'SIPULISIPULIHarvinaisia psdvsdavsepejä 3€/kpl', 2); 
+INSERT INTO Thread (subforum, time, topic, starter) VALUES (3, '2015-12-26 10:03:40', 'HarvinaSIPULISIPULISIPULIisivsa pepejäsadvsadvsadv 3€/kpl', 3); 
+INSERT INTO Thread (subforum, time, topic, starter) VALUES (4, '2015-12-27 10:03:40', 'HarvinaisiadsdavaSIPULISIPULsdfafIsdvsadvvsa pepejä 3€/kpl', 4); 
+INSERT INTO Thread (subforum, time, topic, starter) VALUES (1, '2015-12-28 10:03:40', 'sadv pesdvavsdavsSIPULISIPULIdavsdvsdvpejä 3€/kpl', 1); 
+INSERT INTO Thread (subforum, time, topic, starter) VALUES (2, '2015-12-29 10:03:40', 'HarviSIPULISIPULInaisadvia asdvsdvasdvpepejä 3€/kpl', 4); 
+INSERT INTO Thread (subforum, time, topic, starter) VALUES (3, '2015-12-30 10:03:40', 'Harvinaisdavssdvia pepejä 3€/SIPULIkpl', 6); 
+INSERT INTO Thread (subforum, time, topic, starter) VALUES (4, '2015-12-31 10:03:40', 'Harvinaissdvasdavsdavsia peSIPULISIPULIpejä 3€/kpl',
+INSERT INTO Thread (subforum, time, topic, starter) VALUES (6, '2015-12-26 12:03:40', 'Pepejä tarjolla 3€/kpl', 3); 
+INSERT INTO Thread (subforum, time, topic, starter) VALUES (6, '2015-12-27 13:03:40', 'Pepejä myynnissä 15€/kpl', 4); 
+INSERT INTO Thread (subforum, time, topic, starter) VALUES (6, '2015-12-28 14:03:40', 'Oi oi oi mummo palaa', 1); 
+INSERT INTO Thread (subforum, time, topic, starter) VALUES (5, '2015-12-29 15:03:40', 'Nice homma', 4); 
+INSERT INTO Thread (subforum, time, topic, starter) VALUES (5, '2015-12-30 16:03:40', 'Top kek ! ! !', 6); 
+INSERT INTO Thread (subforum, time, topic, starter) VALUES (5, '2015-12-31 10:03:40', 'Hah hah haa hassu', 8);
+INSERT INTO Thread (subforum, time, topic, starter) VALUES (6, NOW(), 'Smsmsmsmsmsm', 1);
 INSERT INTO Message (content, time, author, thread) VALUES ('Perkele että on edullisia pepejä', NOW(), 1, 7);
 INSERT INTO Message (content, time, author, thread) VALUES ('Perkele että on asdv pepejä',  NOW(), 2, 7);
 INSERT INTO Message (content, time, author, thread) VALUES ('Perkele että on edsdavaasvullisia pepejä', NOW(), 3, 7);
@@ -39,5 +49,6 @@ INSERT INTO Message (content, time, author, thread) VALUES ('Perkele että on ea
 INSERT INTO Message (content, time, author, thread) VALUES ('Perkele että on esdvasdvdullisia pepejä', NOW(), 5, 6);
 INSERT INTO Message (content, time, author, thread) VALUES ('Perkele ettsdvavsdaä on edullisia pepejä', NOW(), 5, 7);
 INSERT INTO Message (content, time, author, thread) VALUES ('Perkele etsvdavsadvsadvtä on edullisia pepejä', NOW(), 5, 8);
+INSERT INTO Message (content, time, author, thread) VALUES ('Sipulia sipulia', NOW(), 1, 8);
 
 

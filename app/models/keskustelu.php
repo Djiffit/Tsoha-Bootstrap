@@ -1,6 +1,6 @@
 <?php
 
-class keskustelu extends BaseModel {
+class Keskustelu extends BaseModel {
 
     public $id, $topic, $subforum, $starter, $time;
 
@@ -23,71 +23,55 @@ class keskustelu extends BaseModel {
         $rows = $query->fetchAll();
         $keskustelut = array();
         foreach ($rows as $row) {
-            $keskustelut[] = new keskustelu(array(
+            $keskustelut[] = new Keskustelu(array(
                 'id' => $row['id'],
                 'topic' => $row['topic'],
                 'subforum' => $row['subforum'],
-                'starter' => tili::getUserByID($row['starter']),
+                'starter' => Tili::getKayttajaIDlla($row['starter']),
                 'time' => $row['time']
             ));
         }
         return $keskustelut;
     }
 
-    public static function getThreadById($id) {
+    public static function keskusteluIdAvulla($id) {
         $query = DB::connection()->prepare('SELECT * FROM Thread where id = :id');
         $query->execute(array('id' => $id));
         $row = $query->fetch();
-        $keskustelu[] = new keskustelu(array(
+        $keskustelu[] = new Keskustelu(array(
             'id' => $row['id'],
             'topic' => $row['topic'],
-            'subforum' => keskustelualue::subforumNameByID($row['subforum']),
+            'subforum' => Keskustelualue::alifoorumiNimiIdlla($row['subforum']),
             'time' => $row['time'],
             'starter' => $row['starter']
         ));
         return $keskustelu;
     }
 
-//    public static function getBeforeDate($date) {
-//        $query = DB::connection()->prepare("SELECT * FROM Thread where time < :day::date");
-//        $query->execute(array('day' => $date));
-//        $rows = $query->fetchAll();
-//        $keskustelut = array();
-//        foreach ($rows as $row) {
-//            $keskustelut[] = new keskustelu(array(
-//                'id' => $row['id'],
-//                'topic' => $row['topic'],
-//                'subforum' => $row['subforum'],
-//                'starter' => $row['starter'],
-//                'time' => $row['time']
-//            ));
-//        }
-//    }
-
-    public static function getBySubForum($id) {
+    public static function keskusteluAlifooruminAvulla($id) {
         $query = DB::connection()->prepare('SELECT * FROM Thread where subforum = :id order by time desc');
         $query->execute(array('id' => $id));
         $rows = $query->fetchAll();
         $keskustelut = array();
         foreach ($rows as $row) {
-            $keskustelut[] = new keskustelu(array(
+            $keskustelut[] = new Keskustelu(array(
                 'id' => $row['id'],
                 'topic' => $row['topic'],
                 'subforum' => $row['subforum'],
-                'starter' => tili::getUserByID($row['starter']),
+                'starter' => Tili::getKayttajaIDlla($row['starter']),
                 'time' => $row['time']
             ));
         }
         return $keskustelut;
     }
 
-    public static function getByStarter($id) {
+    public static function keskusteluAloittajanAvulla($id) {
         $query = DB::connection()->prepare('SELECT * FROM Thread where starter = :id order by time desc');
         $query->execute(array('id' => $id));
         $rows = $query->fetchAll();
         $keskustelut = array();
         foreach ($rows as $row) {
-            $keskustelut[] = new keskustelu(array(
+            $keskustelut[] = new Keskustelu(array(
                 'id' => $row['id'],
                 'topic' => $row['topic'],
                 'subforum' => $row['subforum'],
@@ -116,16 +100,15 @@ class keskustelu extends BaseModel {
     public function update() {
         $query = DB::connection()->prepare('UPDATE thread SET topic = :topic where id= :id;');
         $query->execute(array('id' => $this->id, 'topic' => $this->topic));
-        $row = $query->fetch();
     }
 
     public function delete() {
+        $query = DB::connection()->prepare('DELETE from favorite where threadid = :id');
+        $query->execute(array('id' => $this->id));
         $query = DB::connection()->prepare('DELETE from message where thread = :id');
         $query->execute(array('id' => $this->id));
-        $row = $query->fetch();
         $query = DB::connection()->prepare('DELETE from thread where id=:id');
         $query->execute(array('id' => $this->id));
-        $row = $query->fetch();
     }
 
 }

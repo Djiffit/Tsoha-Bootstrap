@@ -1,6 +1,6 @@
 <?php
 
-class viesti extends BaseModel {
+class Viesti extends BaseModel {
 
     public $id, $content, $time, $author, $thread;
 
@@ -11,16 +11,16 @@ class viesti extends BaseModel {
     }
     
 
-    public static function getByID($id) {
+    public static function haeIDlla($id) {
         $query = DB::connection()->prepare('SELECT * FROM message where id = :id');
         $query->execute(array('id' => $id));
         $row = $query->fetch();
-        $viestit[] = new viesti(array(
+        $viestit[] = new Viesti(array(
             'id' => $row['thread'],
             'content' => $row['content'],
             'time' => $row['time'],
             'author' => $row['id'],
-            'thread' => keskustelu::getTopic($row['thread'])
+            'thread' => Keskustelu::getTopic($row['thread'])
         ));
 
         return $viestit;
@@ -34,19 +34,19 @@ class viesti extends BaseModel {
         return $row;
     }
 
-    public static function getByThread($id) {
-        $query = DB::connection()->prepare('SELECT * FROM message where thread = :id');
+    public static function haeLangalla($id) {
+        $query = DB::connection()->prepare('SELECT * FROM message where thread = :id order by time ');
         $query->execute(array('id' => $id));
         $rows = $query->fetchAll();
         $viestit = array();
         foreach ($rows as $row) {
 
-            $viestit[] = new viesti(array(
+            $viestit[] = new Viesti(array(
                 'id' => $row['id'],
                 'content' => $row['content'],
                 'time' => $row['time'],
-                'author' => tili::getUserByID($row['author']),
-                'thread' => keskustelu::getTopic($row['thread'])
+                'author' => Tili::getKayttajaIDlla($row['author']),
+                'thread' => Keskustelu::getTopic($row['thread'])
             ));
         }
         return $viestit;
@@ -60,21 +60,21 @@ class viesti extends BaseModel {
         }
     }
 
-    public static function getMostRecent() {
-        $query = DB::connection()->prepare('SELECT * FROM message order by time desc LIMIT 50');
+    public static function tuoreimmat() {
+        $query = DB::connection()->prepare('SELECT * FROM message order by time desc LIMIT 35');
         $query->execute();
         $rows = $query->fetchAll();
         $viestit = array();
         $kaytetyt = array();
         foreach ($rows as $row) {
-            if (viesti::onkoKaytetty($row, $kaytetyt) && sizeof($kaytetyt) < 20) {
+            if (Viesti::onkoKaytetty($row, $kaytetyt) && sizeof($kaytetyt) < 20) {
                 array_push($kaytetyt, $row['thread']);
-                $viestit[] = new viesti(array(
+                $viestit[] = new Viesti(array(
                     'id' => $row['thread'],
                     'content' => $row['content'],
                     'time' => $row['time'],
-                    'author' => tili::getUserByID($row['author']),
-                    'thread' => keskustelu::getTopic($row['thread'])
+                    'author' => Tili::getKayttajaIDlla($row['author']),
+                    'thread' => Keskustelu::getTopic($row['thread'])
                 ));
             }
         }
@@ -85,18 +85,18 @@ class viesti extends BaseModel {
         return $this->$thread;
     }
 
-    public static function getByAuthor($id) {
+    public static function haeTekijalla($id) {
         $query = DB::connection()->prepare('SELECT * FROM message where author = :id order by time desc LIMIT 10');
         $query->execute(array('id' => $id));
         $rows = $query->fetchAll();
         $viestit = array();
         foreach ($rows as $row) {
-            $viestit[] = new viesti(array(
+            $viestit[] = new Viesti(array(
                 'id' => $row['id'],
                 'content' => $row['content'],
                 'time' => $row['time'],
-                'author' => tili::getUserByID($row['author']),
-                'thread' => keskustelu::getTopic($row['thread'])
+                'author' => Tili::getKayttajaIDlla($row['author']),
+                'thread' => Keskustelu::getTopic($row['thread'])
             ));
         }
         return $viestit;
@@ -112,13 +112,11 @@ class viesti extends BaseModel {
     public function update() {
         $query = DB::connection()->prepare('UPDATE message SET content = :content where id= :id;');
         $query->execute(array('id' => $this->id, 'content' => $this->content));
-        $row = $query->fetch();
     }
 
     public function delete() {
         $query = DB::connection()->prepare('DELETE from message where id=:id');
         $query->execute(array('id' => $this->id));
-        $row = $query->fetch();
     }
 
     public function validateContent() {
@@ -128,12 +126,4 @@ class viesti extends BaseModel {
         }
         return $errors;
     }
-
-//    public function validateThread() {
-//        $errors[] = array();
-//        if (!ctype_digit($this->thread) || $this->thread < 0) {
-//            $errors[] = 'Lankaa johon viesti yritetään lisätä ei ole olemassa!';
-//        }
-//        return $errors;
-//    }
 }

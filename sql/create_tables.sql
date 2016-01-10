@@ -1,7 +1,8 @@
 CREATE TABLE Loggedin(
   id SERIAL PRIMARY KEY,
   name varchar(30) NOT NULL,
-  password varchar(30) NOT NULL
+  password varchar(30) NOT NULL,
+  moderator INTEGER
 );
 
 CREATE TABLE Subforum(

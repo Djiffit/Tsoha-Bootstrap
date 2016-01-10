@@ -16,7 +16,7 @@
         <tr>
             <td>{{keskustelualue.topic}}
                 <div  class="btn-group btn-group-xs pull-right" role="group">
-                    {% if (keskustelualue.starter == user_logged_in.name or user_logged_in.id == 1) %}
+                    {% if (keskustelualue.starter == user_logged_in.name or user_logged_in.moderator == 1) %}
                     <a href="{{base_path}}/lanka/edit/{{keskustelualue.id}}"<button type="button" class="btn btn-default btn-xs"">Muokkaa</button></a>
                     <a href="{{base_path}}/lanka/kill/{{keskustelualue.id}}"<button type="button" class="btn btn-default btn-xs"">Poista</button></a>
                     {%endif%}

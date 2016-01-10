@@ -16,13 +16,11 @@
 <form method="post" action="{{base_path}}/viesti/edit/{{viesti.author}}">
     <div class="form-group">
         <label>Viesti</label>
-        <textarea name="viesti" class="form-control" id="viesti" cols="15" rows="13">{%if params%}
-{{params.viesti}}{%else%}{{viesti.content}}{%endif%}</textarea>
+        <textarea name="viesti" class="form-control" id="viesti" cols="15" rows="13">{%if params%}{{params.viesti}}{%else%}{{viesti.content}}{%endif%}</textarea>
     </div>
     <div class="form-group">
         <label>Alkuperäinen viesti</label>
         <textarea class="form-control"readonly>{{viesti.content}}</textarea>
-
     </div>
     <button class="btn btn-default">Tallenna viesti</button>
 </form>

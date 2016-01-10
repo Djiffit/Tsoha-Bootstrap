@@ -1,93 +1,107 @@
 <?php
 
 $routes->get('/', function() {
-    etusivunvalitsija::index();
+    EtusivunHallitsija::index();
 });
-
-
 
 $routes->get('/sandbox', function() {
     HelloWorldController::sandbox();
 });
 
 $routes->get('/tili/', function() {
-    profiilinhallitsija::luoSivu();
+    TilinHallitsija::luoSivu();
 });
 
 $routes->get('/keskustelualueet/:id', function($id) {
-    keskustelualueenluoja::luoAliFoorumi($id);
+    KeskustelualueenHallitsija::luoAliFoorumi($id);
 });
 
 $routes->get('/logout', function() {
-    profiilinhallitsija::kirjauduUlos();
+    TilinHallitsija::kirjauduUlos();
 });
 
 $routes->post('/langat/:id', function($id) {
-    keskustelualueenluoja::luoKetju($id);
+    KeskustelualueenHallitsija::luoKetju($id);
 });
 
 $routes->post('/langat/:id', function($id) {
-    keskustelualueenluoja::luoKetju($id);
+    KeskustelualueenHallitsija::luoKetju($id);
 });
 
 $routes->post('/suosikit/lisaa', function() {
-    profiilinhallitsija::lisaaSuosikki();
+    TilinHallitsija::lisaaSuosikki();
 });
 
 $routes->post('/lanka/edit/:id', function($id) {
-    keskustelualueenluoja::editoiKetjua($id);
+    KeskustelualueenHallitsija::editoiKetjua($id);
 });
 
 $routes->post('/suosikit/poista', function() {
-    profiilinhallitsija::suosikinPoisto();
+    TilinHallitsija::suosikinPoisto();
 });
 
 $routes->post('/login/register', function() {
-    profiilinhallitsija::luoTunnus();
+    TilinHallitsija::luoTunnus();
 });
 
 $routes->get('/lanka/edit/:id', function($id) {
-    keskustelualueenluoja::luoKetjunEditoija($id);
+    KeskustelualueenHallitsija::luoKetjunEditoija($id);
 });
 
 $routes->get('/lanka/kill/:id', function($id) {
-    keskustelualueenluoja::tapaKetju($id);
+    KeskustelualueenHallitsija::tapaKetju($id);
+});
+
+$routes->get('/tilit/', function() {
+    TilinHallitsija::listaaTilit();
 });
 
 $routes->get('/uusi/ketju/:id', function($id) {
-    keskustelualueenluoja::luoUusiKetju($id);
+    KeskustelualueenHallitsija::luoUusiKetju($id);
 });
 
 $routes->get('/uusi/viesti/:id', function($id) {
-    keskustelualueenluoja::luoUusiViesti($id);
+    ViestinHallitsija::luoUusiViesti($id);
 });
 
 $routes->post('/lanka/:id', function($id) {
-    keskustelualueenluoja::luoViesti($id);
+    ViestinHallitsija::luoViesti($id);
 });
 
 $routes->get('/viesti/edit/:id', function($id) {
-    keskustelualueenluoja::muokkaaViestia($id);
+    ViestinHallitsija::muokkaaViestia($id);
 });
 
 $routes->get('/viesti/kill/:id', function($id) {
-    keskustelualueenluoja::tapaViesti($id);
+    ViestinHallitsija::tapaViesti($id);
 });
 
 $routes->post('/viesti/edit/:id', function($id) {
-    keskustelualueenluoja::luoMuokattuViesti($id);
+    ViestinHallitsija::luoMuokattuViesti($id);
+});
+
+$routes->post('/tilit/kill', function() {
+    TilinHallitsija::poistaTili();
+});
+
+$routes->post('/tili/uusisalasana', function() {
+    TilinHallitsija::uusiSalasana();
+});
+
+$routes->post('/tili/uusinimi', function() {
+    TilinHallitsija::uusiNimi();
 });
 
 $routes->get('/aiheet/', function() {
-    keskustelualueenluoja::luoAliFoorumit();
+    KeskustelualueenHallitsija::luoAliFoorumit();
 });
 
 $routes->get('/aiheet/:id', function($id) {
-    keskustelualueenluoja::luoAliFoorumi($id);
+    KeskustelualueenHallitsija::luoAliFoorumi($id);
 });
 
 $routes->get('/langat/:id', function($id) {
-    keskustelualueenluoja::luoLanka($id);
+    KeskustelualueenHallitsija::luoLanka($id);
 });
 
 $routes->get('/langat', function() {
@@ -99,19 +113,19 @@ $routes->get('/langat/kokeilu', function() {
 });
 
 $routes->post('/login/', function() {
-    profiilinhallitsija::tunnuksetPeliin();
+    TilinHallitsija::tunnuksetPeliin();
 });
 
 $routes->get('/login/', function() {
-    profiilinhallitsija::loginSivu();
+    TilinHallitsija::loginSivu();
 });
 
 $routes->get('/suosikit/', function() {
-    profiilinhallitsija::suosikinLuoja();
+    TilinHallitsija::suosikinLuoja();
 });
 
 $routes->post('/suosikit/', function() {
-    profiilinhallitsija::suosikinPoistaja();
+    TilinHallitsija::suosikinPoistaja();
 });
 
 $routes->get('/tili/muokkaa', function() {

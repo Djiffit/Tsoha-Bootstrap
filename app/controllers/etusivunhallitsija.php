@@ -1,9 +1,9 @@
 <?php
 
-class etusivunvalitsija extends BaseController {
+class EtusivunHallitsija extends BaseController {
     
     public static function index() {
-        $viestit = viesti::getMostRecent();
+        $viestit = Viesti::tuoreimmat();
         View::make('home.html', array('viestit' => $viestit));
     }
 }
